@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMU Fault Finder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="title-block">
+      <h1>BMU Fault Finder</h1>
+      <p class="subtitle">Always follow site SSOW, O&amp;M manuals and company procedures. This tool is guidance only.</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="filters" aria-label="Filter faults">
+      <div class="filter-control">
+        <label for="manufacturerSelect">Manufacturer</label>
+        <select id="manufacturerSelect"></select>
+      </div>
+      <div class="filter-control">
+        <label for="subsystemSelect">Subsystem</label>
+        <select id="subsystemSelect"></select>
+      </div>
+      <div class="filter-control">
+        <label for="symptomSelect">Symptom</label>
+        <select id="symptomSelect"></select>
+      </div>
+      <div class="filter-control">
+        <label for="searchInput">Search</label>
+        <input id="searchInput" type="text" placeholder="Search by symptom, cause, parts…">
+      </div>
+    </section>
+
+    <div id="resultsSummary" role="status" aria-live="polite"></div>
+
+    <section id="resultsSection" aria-label="Fault results">
+      <div id="faultResults"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>BMU Fault Finder · Use at your own risk · Always follow local regulations</p>
+  </footer>
+
+  <script src="faults-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
