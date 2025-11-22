@@ -1,0 +1,44 @@
+# Node / JS ecosystem (even if not used yet, safe defaults)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build artifacts
+dist/
+build/
+.cache/
+.parcel-cache/
+coverage/
+.tmp/
+
+# Logs
+logs/
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env / secrets (in case you add any API keys later)
+.env
+.env.*
+*.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Misc
+*.tmp
+*.bak
+*.orig
