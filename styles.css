@@ -135,6 +135,31 @@ input[type="text"] {
   color: #111827;
 }
 
+.technical-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.toggle-btn {
+  background: #e5e7eb;
+  color: #111827;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  background: #dfe3ea;
+}
+
+.collapsible {
+  margin-top: 0.35rem;
+}
+
 ul,
 ol {
   margin: 0.2rem 0 0.8rem 1.2rem;
@@ -171,6 +196,12 @@ ol {
   margin-left: 0.6rem;
   color: var(--accent);
   font-weight: 600;
+}
+
+.metadata {
+  margin: 0.75rem 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 textarea.manual-copy {
