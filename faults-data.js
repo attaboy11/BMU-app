@@ -1112,3 +1112,510 @@ const FAULT_DATA = [
     ]
   }
 ]
+[
+  {
+    "id": "coxgomyl_hoist_motor_overheat",
+    "manufacturer": "CoxGomyl",
+    "sub_system": "Hoist Drive",
+    "symptom_title": "Hoist motor frequently overheats or trips",
+    "symptom_details": [
+      "Hoist motor cuts out during lifting operations, often after prolonged use",
+      "Thermal overload relay or PLC alarm triggers (motor over-temperature fault)",
+      "Motor feels excessively hot to touch and requires cooldown before reset"
+    ],
+    "technical_root_causes": [
+      "Thermal overload due to prolonged high current draw or overloading of the hoist:contentReference[oaicite:29]{index=29}:contentReference[oaicite:30]{index=30}",
+      "Phase imbalance or phase loss in the 3-phase supply causing increased current on remaining phases:contentReference[oaicite:31]{index=31}",
+      "Brake coil not fully releasing (brake dragging) leading to the motor fighting the brake and overheating",
+      "Worn or seized motor bearings increasing friction and load on the motor, causing overheating:contentReference[oaicite:32]{index=32}"
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Isolate power** per Safe System of Work before inspection (Lock-Out Tag-Out). Ensure the BMU is parked safely.",
+      "Step 2: Visually inspect the motor and brake for signs of heat damage (discolored coils, smell of burnt insulation). Check if the motor's thermal overload relay has tripped and note the conditions.",
+      "Step 3: Verify the 3-phase supply voltages are balanced and present on all phases (a blown fuse or phase loss can cause overheating on the remaining phases). Use a multimeter to check input lines:contentReference[oaicite:33]{index=33}.",
+      "Step 4: Measure motor winding resistances phase-to-phase to detect imbalance or a possible winding short. Also measure insulation resistance to ground.",
+      "Step 5: Check the motor brake release: ensure the brake is lifting fully when energized. Measure the brake coil voltage and inspect the air gap; an incorrect gap or weak coil can cause the brake to partially engage:contentReference[oaicite:34]{index=34} (leading to high load on motor).",
+      "Step 6: Manually rotate the hoist drum or gearbox (with power off and brake released) to feel for excessive friction or tight spots indicating bearing or gearbox issues."
+    ],
+    "safety_hazards_and_warnings": [
+      "Ensure **Lockout/Tagout** is applied before working on the motor circuit – high voltage present.",
+      "Motor and brake surfaces may be extremely hot after a trip – risk of burns. Allow adequate cooling time.",
+      "Repeated resetting of a tripped thermal overload without fixing the cause can lead to motor insulation damage or fire – investigate cause after a single trip.",
+      "Do not operate the BMU if the motor overheats frequently – this indicates an unsafe condition that could lead to motor failure while personnel are on the facade."
+    ],
+    "remedial_actions": [
+      "Reduce the load or duty cycle if the motor was being overworked (stay within Safe Working Load and runtime limits as per manual).",
+      "Repair the supply issue: restore balanced 3-phase power if a phase was lost (check mains connections, fuses, phase-monitor relay functionality).",
+      "Adjust or repair the brake assembly – set correct air gap and replace a weak brake coil or worn brake pads to eliminate drag.",
+      "Replace motor bearings or the motor itself if diagnostics indicate internal mechanical friction. After replacement, test-run the motor and monitor current draw/temperature.",
+      "Ensure ventilation around the motor is adequate (clear dust from cooling fins) and ambient temperature is within spec."
+    ],
+    "compliance_standard": "LOLER 1998 (Reg.9 Thorough Exam) & BS 6037-1:2017 (maintenance of drive systems)",
+    "confidence": "High"
+  },
+  {
+    "id": "tractel_rope_traction_slip",
+    "manufacturer": "Tractel",
+    "sub_system": "Hoist Drive",
+    "symptom_title": "Hoist motor runs but cradle does not lift (rope slipping)",
+    "symptom_details": [
+      "Hoist motor can be heard running, but the cradle either stalls or ascends very slowly under load",
+      "Wire rope movement is observed on the drum or traction sheave with little/no lifting of the platform",
+      "Possibly a burning smell or heating of the rope at the hoist (friction from slippage)"
+    ],
+    "technical_root_causes": [
+      "Worn traction sheave or pressure roller in friction hoist (e.g., Tirak) causing insufficient grip on the wire rope, leading to slippage:contentReference[oaicite:35]{index=35}",
+      "Glazed or oily rope reducing friction – contaminants or lack of proper rope pressure can cause the rope to slip under load",
+      "Excessive load above the hoist’s rated capacity causing the rope to slip instead of lifting (the traction system is designed to slip to prevent overload)",
+      "Gearbox or coupling wear in a drum hoist: the motor turns but the drum does not impart full torque to the rope (internal slippage in gearbox)"
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Immediately stop operation** if rope slip is suspected. Do not continue hoisting a load that isn’t moving, as this can damage the rope.",
+      "Step 2: Inspect the hoisting mechanism (traction sheave or drum) for wear. In a traction hoist, check the groove profiles on the drive pulley for wear or polishing. In drum hoists, check if the drum or couplings are intact.",
+      "Step 3: Examine the wire rope for any signs of glaze, oil/grease, or flattening. Clean a small section of the rope and perform a friction test if possible (rope should be dry and suitably lubricated per manufacturer spec, not oily on surface).",
+      "Step 4: Verify the hoist’s **overload device** status. Many BMUs have overload sensors that should trip in genuine overloads:contentReference[oaicite:36]{index=36}. If no overload trip, yet slipping occurs, mechanical issues are likely. If an overload was tripped, reduce the load and test again with a safe load.",
+      "Step 5: Check the rope pressure mechanism (on Tractel Tirak, the spring-loaded rollers). Ensure the tension springs are intact and providing sufficient force on the rope. Adjust tension if the manufacturer allows.",
+      "Step 6: For drum hoists, scribe a line on the drum and observe if it slips relative to the motor shaft during lifting. This can indicate a coupling/gearbox issue if the motor turns but drum lags."
+    ],
+    "safety_hazards_and_warnings": [
+      "**Danger:** Rope slipping under load can lead to sudden **free-fall** if traction is lost. Ensure the secondary overspeed brake is functional – it should activate if the descent speed exceeds safe limits:contentReference[oaicite:37]{index=37}.",
+      "Do not let personnel stay on a platform that is not lifting as expected; secure or lower it to a safe position. Rope slip can rapidly degrade the rope (heat/friction).",
+      "Keep clear below the platform; if the rope were to suddenly regain traction or fail, the platform or objects could fall.",
+      "Never exceed the SWL (Safe Working Load) of the BMU – the hoist slipping is a warning sign of either overload or equipment failure."
+    ],
+    "remedial_actions": [
+      "Replace or re-machine the traction sheave if worn smooth. A proper groove profile is needed to grip the rope. Also replace the pressure rollers or liners if applicable.",
+      "Thoroughly clean the wire rope and sheave to remove any grease build-up. If the rope has been glazed or heat-damaged from slipping, it should be replaced and not re-used.",
+      "If an overload condition was the cause, remove excess weight and **re-calibrate the overload safety device**. Perform a test lift with a known load to ensure proper operation without slip.",
+      "Inspect the gearbox and couplings – if signs of internal slipping are found (e.g. metal shavings in oil, loose coupling bolts, etc.), repair or replace those components. After fixes, run the hoist with no load then incrementally add load to verify full torque transmission.",
+      "Re-test the overspeed brake and slack-rope safety devices before returning to service, to ensure they intervene properly in case of any future slippage or sudden load drop."
+    ],
+    "compliance_standard": "EN 1808 (hoist overspeed & overload protection), BS 6037-1:2017",
+    "confidence": "High"
+  },
+  {
+    "id": "generic_brake_fail_slide",
+    "manufacturer": "Generic",
+    "sub_system": "Hoist Drive",
+    "symptom_title": "Suspended platform creeps down after stopping (brake not holding)",
+    "symptom_details": [
+      "After the hoist is stopped, the cradle slowly descends or slips a few centimeters/minute without command",
+      "Operators notice the platform does not stay at a set height when idle, requiring frequent corrective raises",
+      "In extreme cases, the platform can be seen drifting down immediately when the hoist motor is off"
+    ],
+    "technical_root_causes": [
+      "Failure of the electromagnetic hoist brake to hold: brake pads/shoes are worn or glazed, reducing friction so it cannot support the load",
+      "Brake coil weakness or improper voltage – the coil may not generate full holding force, especially if voltage is low or coil is heat-damaged, causing *brake hysteresis* (delay in engagement or incomplete magnetization)",
+      "Excessive air gap between brake and armature plate due to misadjustment, meaning the brake spring cannot pull the plate fully when power is removed",
+      "Hoist overloaded beyond brake design – the holding torque of the brake is exceeded by the suspended load (could happen if the load sensor is bypassed or malfunctioning)",
+      "On twin-drum systems, if one brake or drive holds and the other slips, the platform can tilt/slip (synchronization issue, though this is a more complex scenario)"
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Do not allow personnel on the platform** until this issue is resolved. Secure the platform by lowering it to rest on a solid surface or tie it off. If mid-air, use secondary safety lines or support props if available.",
+      "Step 2: With power off and E-stop engaged, manually test the brake: there is often a manual brake release lever – when engaged the platform should be allowed to move (with controlled lowering via secondary device). Observe if the brake re-engages promptly when released. If it doesn’t, or if the platform moves even with brake supposedly engaged, the brake is faulty.",
+      "Step 3: Inspect the brake discs or drum for oil, grease, or heavy rust. Any contamination can significantly reduce brake holding capacity. If present, schedule a cleaning or replacement of pads. **Never touch the brake surfaces with bare hands** if you plan to reuse them (oil from skin can reduce friction).",
+      "Step 4: Measure the brake coil resistance and check the coil’s power supply. Compare coil operating voltage to spec. A coil with partially shorted windings may still actuate but not hold the full force. Also verify that when power is cut, the coil fully de-energizes (no residual voltage).",
+      "Step 5: Using feeler gauges, measure the air gap between the brake armature plate and motor endbell (or brake field) when the brake is engaged (power off). Compare with manufacturer’s recommended gap. An excessive gap means the brake spring cannot develop enough clamping force or has too much travel.",
+      "Step 6: Check mechanical components: springs (in spring-applied brakes) should not be broken or fatigued, and all fastening hardware should be tight. A loose mounting can cause misalignment and partial holding.",
+      "Step 7: If the BMU has multiple hoists, test each hoist’s brake individually (some systems allow isolating one hoist) to identify if only one side is slipping."
+    ],
+    "safety_hazards_and_warnings": [
+      "**DANGER:** A creeping or slipping hoist indicates a **potential catastrophic brake failure** – the platform could accelerate downwards. No one should ride in the platform until the brake is fixed and tested.",
+      "Ensure the secondary emergency brake (overspeed brake) is operational. In case the main brake cannot hold, the overspeed device should lock the rope if descent speed increases:contentReference[oaicite:38]{index=38}.",
+      "When working on the brake, the platform must be secured. Use crane support or ropes to take the load; releasing a faulty brake under load can result in an immediate drop of the platform.",
+      "Lockout power and discharge any stored energy before servicing. If working at height near the hoist, wear a harness – a sudden jolt from a slipping brake could knock someone off balance.",
+      "Do not assume a single brake will hold redundancy: BMUs rely on each hoist’s brake plus backups. If one is suspect, treat the whole system as unsafe."
+    ],
+    "remedial_actions": [
+      "Replace brake pads/shoes if they are worn out or contaminated. After replacement or cleaning, *conduct a static load test* by hanging a rated load and observing for any slip over a period (per BS 6037 requirements).",
+      "Adjust the brake air gap to manufacturer’s specification. Most hoist brakes allow minor gap adjustments as the lining wears. Ensure uniform gap all around by using shims or adjustment screws as directed by the service manual.",
+      "Replace the brake coil if testing shows it out of spec (high resistance or burnt). Also check/replace the rectifier or coil power supply if it’s not delivering full voltage – a DC brake coil getting low voltage will have reduced holding torque.",
+      "If the brake was found to be okay mechanically, investigate control issues: ensure that the brake is actually being commanded to engage when it should (for example, some systems keep the brake open if a drive fault occurs – verify the control logic). This might involve checking the PLC or relay that controls the brake circuit.",
+      "Once repaired, **perform a drop test** without personnel: run the cradle up a small height, stop it, and observe. Also test the emergency brake by simulating a power failure while the cradle is moving (the cradle should stop promptly). These tests ensure compliance with EN 1808 dual-braking requirements before returning to service."
+    ],
+    "compliance_standard": "EN 1808 (dual brake requirements), LOLER 1998 (Schedule 1, lifting brakes)",
+    "confidence": "High"
+  },
+  {
+    "id": "manntech_plc_comm_loss",
+    "manufacturer": "Manntech",
+    "sub_system": "Control Systems & PLC",
+    "symptom_title": "Intermittent PLC communication fault or loss of control",
+    "symptom_details": [
+      "BMU operations halt occasionally with a PLC fault alarm or error code on the display",
+      "The “Fault” indicator light on the control panel illuminates and the system becomes unresponsive:contentReference[oaicite:39]{index=39}",
+      "Sometimes cycling power restores function, but the fault tends to recur randomly, often during certain motions or at extreme jib positions"
+    ],
+    "technical_root_causes": [
+      "Electrical noise or ground loop interference affecting PLC I/O or communications – for example, VFD-induced noise on control cables or improper grounding causing erratic signals:contentReference[oaicite:40]{index=40}",
+      "Loose or failing communication cable between distributed control elements: Manntech BMUs often have tethered cradle controls (Pendant or MAGTRON wireless) and RS485/serial links:contentReference[oaicite:41]{index=41}; a damaged cable or connector can cause loss of comms.",
+      "Defective PLC I/O module or power supply issues – a failing module can sporadically go offline, or an unstable 24VDC supply can reset parts of the control system.",
+      "Software logic fault or watchdog timeout in the PLC program – e.g., certain sensor conditions not handled, causing the PLC to enter a safe fault state (this is less likely if the fault is new in a previously working system, but possible after updates)."
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Observe the fault pattern** – note what operation was happening when the fault occurs (e.g., does it happen only when slewing, or when multiple motions run together?). This can give clues (a pattern might implicate a specific cable or sensor on the boom/jib).",
+      "Step 2: Check the control **communication cables**. For tethered controls, inspect the entire length of the cable reel or festoon for cuts or pinch points. For wireless (if MAGTRON), ensure the receiver units and antennas are secure. Any connectors between the roof trolley and cradle (like junction boxes or slip rings) should be checked for corrosion or loosening.",
+      "Step 3: Inspect the earthing and grounding of the system. Using a multimeter, verify low resistance ground bonding between the BMU chassis, control panel ground, and building earth. Ground loops can be mitigated by a single-point grounding scheme. Add grounding straps if any sections (like the jib or cradle) rely on bearings for earth continuity.",
+      "Step 4: Open the main control panel and visually inspect the PLC and I/O modules. Look for diagnostic LEDs: often PLCs have error LEDs or communication status lights. If a particular module shows a fault light, focus there. Reseating modular I/O connectors or the backplane connection can sometimes resolve intermittent contacts.",
+      "Step 5: Use PLC diagnostic tools (if available, e.g., laptop with PLC software) to retrieve fault codes or logs. Manntech’s newer systems might log faults like “I/O communication error” or “PLC watchdog tripped”. These can direct troubleshooting (e.g., if an analog input fault corresponds to a ground fault on a sensor).",
+      "Step 6: If suspecting noise, consider temporally adding a filter or snubber to noisy components (for example, RC snubbers on large contactor coils, or line reactors on VFD output) to see if the fault frequency reduces. Also route signal cables away from power cables as much as possible.",
+      "Step 7: Verify all safety circuits and limit switches are functioning correctly. Sometimes a safety device intermittently opening (e.g., a loose emergency stop contact) might appear as a PLC fault or stop condition. Manually jiggle wiring on E-stops and see if fault triggers."
+    ],
+    "safety_hazards_and_warnings": [
+      "Intermittent control faults can cause **unanticipated machine behavior**. Until resolved, operate the BMU in manual slow speed only (if possible) and with utmost caution, or keep it out of service. The BMU might stop suddenly or not respond to commands at height.",
+      "If the PLC is entering fault state, it’s usually fail-safe (everything stops), but **ensure the braking systems are good**. A communication loss could conceivably freeze controls while the cradle is mid-motion – be prepared to use the emergency stop or manual lowering procedures.",
+      "Troubleshooting live PLCs and electrical panels should be done by a qualified engineer. There is a risk of electric shock or shorting when probing control circuits. Use proper PPE and insulated tools, and preferably work with a second person as a spotter.",
+      "Be cautious of simply resetting power to clear faults without understanding them – a sudden restart could lead to movement if a control lever was left engaged or if the fault was masking a condition (ensure all commands are in neutral/off position before resetting)."
+    ],
+    "remedial_actions": [
+      "Repair or replace any damaged communication cabling. For example, if the cradle umbilical cable shows wear, replace it. Ensure connectors are water-tight (IP67 or better) and consider adding strain relief or a service loop to moving cables.",
+      "Improve grounding: establish a single-point ground reference for the control system and add shielded cables for analog/communication signals if not already in use. Ground the shields at one end as per best practice to avoid ground loops while shunting noise to earth.",
+      "Replace faulty PLC modules or power supplies. If diagnostics pointed to a particular I/O rack or module going offline, swap it out. It can be useful to keep a spare PLC or remote I/O module for such testing. After replacement, run the BMU through all functions to confirm stability.",
+      "Work with the manufacturer (Manntech/CoxGomyl) if a software update or bug is suspected – they might provide a PLC program revision if this is a known issue. In one case, for instance, a *“communication timeout”* fault was resolved by a PLC firmware update.",
+      "Document the findings: given the critical nature of BMU controls, record what was done. If noise was an issue, note the source (e.g., VFD) and ensure that any future retrofit (like adding an output reactor or proper VFD grounding) is completed to prevent recurrence."
+    ],
+    "compliance_standard": "BS 6037-1:2017 (Clause on control systems), EN 1808 (electrical safety and control reliability)",
+    "confidence": "Medium"
+  },
+  {
+    "id": "generic_relay_contactor_chatter",
+    "manufacturer": "Generic",
+    "sub_system": "Control Systems & PLC",
+    "symptom_title": "Contactor or relay chattering (unstable control circuit)",
+    "symptom_details": [
+      "Audible rapid clicking sound from a control relay or main contactor when attempting to move the BMU",
+      "Hoist or traverse motion starts and stops quickly in a juddering manner instead of smooth continuous movement",
+      "In some cases, the fault indicator flickers as the power to a motor intermittently connects/disconnects"
+    ],
+    "technical_root_causes": [
+      "Under-voltage to the contactor coil – the coil isn’t getting enough holding voltage (possible causes: faulty control transformer, voltage drop in wiring, or wrong coil rating) so it chatter engages and disengages rapidly",
+      "Control circuit wiring fault such as a loose connection or high resistance contact (e.g., an emergency stop or limit switch making intermittent contact) causing the coil supply to flicker on/off",
+      "Defective relay contacts in an interlock circuit – for example, an auxiliary contact that should hold the circuit may be oxidized or bouncing, failing to maintain the latch",
+      "Contact bounce or PLC output instability – if a PLC output is driving a contactor and the logic is oscillating due to a program bug or sensor flutter, it can manifest as chatter",
+      "Inadequate suppression of the contactor coil’s inductive kickback causing PLC or relay control to malfunction (the noise could reset part of the circuit each time the coil energizes)"
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Observe safely** – confirm which contactor or relay is chattering. Use the electrical schematic to identify what coil it is (e.g., hoist contactor KM1, etc.). This will narrow down which circuit to troubleshoot.",
+      "Step 2: Measure the coil supply voltage with a multimeter while the chatter happens. If the coil voltage is dropping out significantly, trace back: check the control transformer output (if e.g. stepping down from 415V to 110V control). An undervoltage condition (say only getting 70% of rated coil voltage) can cause chattering.",
+      "Step 3: Inspect all series control elements in that circuit for looseness: emergency stop contacts, limit switches, and any relay contacts that feed the coil. Physically wiggle wires and see if that initiates chatter. A common issue is a vibration-sensitive connection that causes self-induced oscillation.",
+      "Step 4: If the coil voltage is steady but it still chatters, the contactor itself may be mechanically worn or the armature might be sticking. De-energize and manually press the contactor in to feel if it moves freely. Look for debris or corrosion in the magnet gap. Also check if the contactor coil is correct (for instance, a coil designed for 50Hz on 60Hz can behave poorly).",
+      "Step 5: Check for proper coil suppression components. AC coils often have shading rings or external RC snubbers; DC coils may have diodes. If someone replaced a contactor coil and omitted the snubber, it could cause PLC inputs to bounce or just audible humming/chatter. Add or replace suppression as needed (reference manufacturer’s spec for the coil).",
+      "Step 6: Examine the PLC logic (if coil is PLC-driven) or the relay logic that controls the coil. Ensure there is a proper seal-in circuit or latch. For example, if a holding contact isn’t addressed in PLC code or a relay’s normally open contact isn’t wired properly to maintain the circuit, the coil will drop as soon as a momentary command is released, then re-energize repeatedly.",
+      "Step 7: Use a temporary jumper (with extreme caution and only if necessary for test) across suspect contacts to simulate them being closed, to isolate which contact’s opening causes the chatter. For instance, bypass an overload relay contact briefly – if chatter stops, that relay may be fluttering (due to a fault or incorrect setting)."
+    ],
+    "safety_hazards_and_warnings": [
+      "Chattering indicates an unstable control condition – **do not continue normal operation**. The rapid on-off can stress the motor and cause unpredictable movement. Stop using the machine until resolved.",
+      "Electrical arcing from the chattering contacts can cause component damage or fire. After isolating power, inspect the contactor for heat damage or burning. Burnt contacts can stick, leading to a failure of the contactor to open when needed (safety hazard).",
+      "While troubleshooting, never bypass safety devices for more than momentary testing, and only by competent personnel. For example, bridging an E-stop to find a fault is dangerous – if the machine could start moving, you must take precautions (platform at ground, etc.). Remove any test jumpers immediately after testing.",
+      "Wear appropriate PPE when investigating the control panel (voltage may be present at control circuits typically 110VAC or 24VDC, and the main power alongside). Use insulated gloves and tools."
+    ],
+    "remedial_actions": [
+      "Tighten and secure all wiring connections in the affected control circuit. Replace any suspect sections of wire or terminal blocks if they don’t clamp well. A single loose screw on a terminal can cause the entire circuit to chatter under vibration.",
+      "Replace the contactor or relay if it’s been damaged by prolonged chattering or if internal springs/contact surfaces are worn out. When replacing, ensure the coil voltage and frequency match the system, and install any recommended suppression devices.",
+      "If a control voltage drop is identified, consider upgrading the control transformer or reducing the burden on it (for instance, too many coils energized simultaneously). In some cases, using a DC coil with a stable DC supply (with proper circuit design) can cure AC chatter issues.",
+      "Add or verify **surge suppression** across coils and other inductive loads. This can include RC snubbers on AC coils or flyback diodes on DC coils. These components will absorb voltage spikes and prevent PLC or other control relays from false triggering.",
+      "Review the electrical schematic against how the machine is wired/programmed. Correct any discrepancies – e.g., if a holding contact was mistakenly not wired in, correct that. After fixes, simulate operations with the machine unloaded: the contactor should pull in firmly and not drop out until the command is released or a safety opens.",
+      "Test all safety functions after the repair. What appeared as contactor chatter could have been a safety rapidly engaging – ensure that E-stops, limit switches, and overloads properly stop the machine and don’t flicker. This will confirm the reliability of the control circuit as per design."
+    ],
+    "compliance_standard": "EN 60204-1 (Electrical equipment of machines), BS 6037-1:2017 (requires reliable controls free of erratic behavior)",
+    "confidence": "Medium"
+  },
+  {
+    "id": "generic_vfd_overcurrent_trip",
+    "manufacturer": "Generic",
+    "sub_system": "Electrical & Drives",
+    "symptom_title": "VFD reports Overcurrent fault when raising or driving BMU",
+    "symptom_details": [
+      "The Variable Frequency Drive (inverter) feeding a hoist or travel motor frequently trips on “Overcurrent” fault",
+      "Fault often occurs at the start of motion or when trying to lift a heavy load, causing an abrupt stop",
+      "Sometimes accompanied by a spike in current reading and the drive’s overload indicator before the trip"
+    ],
+    "technical_root_causes": [
+      "Mechanical overload or jam: the motor is encountering resistance beyond its limit (e.g. hoist drum jammed, gearbox seized or cradle stuck), causing current to shoot above drive limits:contentReference[oaicite:42]{index=42}",
+      "Short circuit or phase-to-phase fault at the motor or cabling: a partially shorted motor winding or damaged cable can draw excessive current immediately, triggering drive protection",
+      "Drive IGBT failure: a faulty output transistor in the VFD can cause improper current sensing or actually create an overcurrent condition on one phase (often accompanied by drive self-diagnostics indicating a power stage fault)",
+      "Acceleration parameters too aggressive: if the drive’s accel time is set too fast, the motor may draw excessive inrush current trying to ramp up the load inertia quickly, overshooting the overcurrent threshold",
+      "Inadequate supply or voltage sag: a dip in supply can cause the drive to try to compensate with more current. Also, if supply voltage is higher than motor spec, it can magnetize the motor excessively and trip (less common)"
+    ],
+    "diagnostic_steps": [
+      "Step 1: Verify the **mechanical freedom** of the system. Manually (with power off) try to rotate the hoist drum or drive wheels. If it’s stuck solid, focus on the mechanical jam (rope snarled, gearbox frozen). If it moves smoothly by hand (with brake released), mechanical binding is less likely the main issue.",
+      "Step 2: Check the load vs. capacity. Ensure the cradle is not overloaded beyond rated SWL – sometimes an overweight condition will consistently trigger overcurrent as the drive attempts to lift. Use a dynamometer or load cell reading if available to verify the suspended load.",
+      "Step 3: Inspect motor and drive connections. Look for any burned smell or visible charring at the motor terminals or along the cable – a short may leave physical evidence. Perform an insulation resistance test (Megger) on the motor to detect winding shorts to ground or between phases. Also, measure the phase-to-phase resistance; a significantly lower reading on one phase could indicate a shorted turn.",
+      "Step 4: Review the VFD’s fault log and parameters. Note at what frequency or speed the fault occurs and any recorded current value. If the drive has a history log (many modern VFDs show last 5 faults, for example), see if it’s always at start (could be acceleration issue) or at some consistent speed/torque.",
+      "Step 5: If possible, do a test run in **jog mode or low speed**. Sometimes starting under a slower ramp helps identify if the fault is instantaneous or builds up. Monitor the motor current (many VFDs allow real-time current monitoring). If current ramps up rapidly even at low speeds, suspect electrical faults. If it stays normal until a certain load point, suspect mechanical resistance beyond that point.",
+      "Step 6: Swap or test with another motor or drive (if available and safe to do so). For example, if the BMU has twin hoist drives, you might be able to see if both behave similarly or one drive is faulting while the other is fine under same conditions. Swapping drives (again, only if identical and properly set up) can isolate whether the issue follows the drive or the motor.",
+      "Step 7: Check the drive’s current limit and acceleration settings. Ensure they are tuned according to the motor nameplate and the BMU design. If someone recently adjusted the drive (or if a default parameter set was loaded), improper settings could cause nuisance trips – compare with the commissioning sheet values."
+    ],
+    "safety_hazards_and_warnings": [
+      "Overcurrent faults often **result in sudden stops** – ensure personnel on the platform are secured, as a lifting halt can jolt the cradle, and tools can fall. After any sudden stop, inspect that the cradle is still secure and ropes properly seated.",
+      "Do not keep resetting and running the drive if it trips repeatedly – the cause needs to be found. Repeated high currents can overheat motor windings quickly or damage the drive. Allow components to cool while troubleshooting.",
+      "When megger testing the motor, disconnect it from the VFD completely – high voltage test could damage drive electronics. Also discharge the VFD’s capacitors and isolate power; some large drives hold charge and can output to the motor even when off.",
+      "If a short circuit is suspected, **do not attempt to run the motor** until it’s fixed – a dead short can lead to violent failure of the drive or motor (fire, arc blast). Use proper test instruments first."
+    ],
+    "remedial_actions": [
+      "Remove the mechanical obstruction or reduce the load: For a jam, clear the rope path, realign the jib, or service the gearbox. For overload, offload any unnecessary weight from the cradle and enforce weight limits (including considering wind forces as additional load).",
+      "Repair electrical faults: replace the motor if windings are shorted or send it for rewinding. Replace any damaged power cables. Only run the drive again once insulation tests pass and connections are secure.",
+      "If the VFD’s power electronics are at fault (confirmed by process of elimination or manufacturer diagnostics), the drive unit or its power module should be replaced. VFD internal repairs are not typically field-serviceable for safety reasons. Install the new or repaired drive and program it with the correct motor parameters before use.",
+      "Adjust drive settings if needed: lengthen the acceleration time to a gentler ramp, and ensure the current limit is set appropriately (it should usually be around 1.5x motor rated current for a short period, depending on drive). This can prevent spurious trips during normal operation. Consult the BMU manual or drive manual for recommended settings.",
+      "After any fix, do a **test under controlled conditions**: First run the motor with no load (cradle empty) to ensure no trip. Then gradually introduce load and verify that the drive can handle full rated load without overcurrent faults. Monitor motor temperature and current during these tests. This verifies the issue is resolved and the system is safe to return to service."
+    ],
+    "compliance_standard": "BS 6037-1:2017 (Electrical systems), LOLER 1998 (preventing overload conditions)",
+    "confidence": "High"
+  },
+  {
+    "id": "generic_vfd_overvoltage_regen",
+    "manufacturer": "Generic",
+    "sub_system": "Electrical & Drives",
+    "symptom_title": "VFD DC bus overvoltage fault during deceleration or lowering",
+    "symptom_details": [
+      "The VFD controlling a motion (hoist or travel) intermittently trips on “DC Bus Overvoltage” fault, especially when slowing down or stopping",
+      "This fault is more common when lowering a heavy cradle or when the BMU trolley is coming to a stop from a long travel – essentially during decel, not accel",
+      "Operators notice the cradle might coast a bit after the stop command, coinciding with the fault (drive trips and motor freewheels until mechanical brake kicks in)"
+    ],
+    "technical_root_causes": [
+      "Regenerative energy from the motor is raising the DC bus voltage beyond the drive’s threshold. For example, when lowering a loaded cradle, the motor acts as a generator. If the drive’s braking circuitry (transistor/resistor) can’t dissipate this energy, the DC link voltage spikes:contentReference[oaicite:43]{index=43}.",
+      "Inadequate or failed braking resistor in the VFD – either none was installed (perhaps not anticipated in design) or the resistor is burnt open. Without a functioning brake resistor or regen unit, the drive has no path to dump excess kinetic energy, hence the DC bus overvoltage fault.",
+      "Deceleration time set too short – the drive is trying to brake the load too quickly, generating a large regenerative current. If the ramp-down is faster than what the system can absorb, the DC bus will surge:contentReference[oaicite:44]{index=44}.",
+      "High supply voltage or incoming surges: if the supply is already near the upper limit, any regeneration easily pushes the DC bus over the trip point. Also, sudden stop of a heavy load can reflect a surge back into a weak power supply system.",
+      "Drive tuning or parameter issues: some drives have an “overvoltage control” or dynamic braking parameter. If these are disabled or mis-tuned, the drive might trip rather than dynamically adjust. (Also, a drive in open-loop vector vs. scalar mode might have different braking performance)."
+    ],
+    "diagnostic_steps": [
+      "Step 1: Check if a **braking resistor** is present and properly connected to the VFD. Locate the resistor (often a grey box or grid resistor mounted near the drive) and visually inspect it and its wiring. Use a multimeter (with power off & capacitors discharged) to measure the resistor’s ohms and compare to spec. An infinite reading means it’s open-circuited and not functioning.",
+      "Step 2: Inspect drive parameters: find the deceleration time and any overvoltage control settings. If the decel ramp is very aggressive (e.g., 0.5 seconds for a full-speed stop), that’s likely a contributor. Also see if “Dynamic Braking” is enabled in the drive and if it’s triggering properly. Some drives log when the brake chopper activates – if it’s not activating at all, either the transistor or resistor could be bad.",
+      "Step 3: Monitor the DC bus voltage in real-time (many drives allow you to display this). Run a test at a safe load: raise the cradle a few meters, then command a stop or downward move and observe the DC bus. If the voltage shoots up near the trip level (the drive manual will state e.g. 780V DC for a 480V drive) just as the fault comes in, it confirms regen is the issue.",
+      "Step 4: Examine the mechanical braking system timing. The electric motor drive should ideally hand off to the mechanical brake smoothly. If the mechanical brake is engaging too late, the drive might be doing all the braking and overstressing. A misadjusted or sticky brake could cause the drive to handle more decel than it should. Check brake lift/drop timing relays or PLC settings for brake delay.",
+      "Step 5: Evaluate external factors: measure the actual supply voltage to the BMU when idle and during operation. If the building supply is on the higher end of tolerance or there’s known power quality issues, the margin for regen is smaller. Also check if multiple BMU motions or other machinery share the supply – one unit’s regen might affect another.",
+      "Step 6: If possible, test a slower deceleration or add a temporary braking resistor if the original is faulty. For example, extend the decel time in the drive from, say, 1.0s to 2.0s and see if the fault still occurs. If an external resistor can be safely hooked up (with proper ohm and watt rating), see if that immediately absorbs the regen energy (the fault should disappear). This A/B test can confirm the root cause."
+    ],
+    "safety_hazards_and_warnings": [
+      "An overvoltage trip often leads to the drive shutting off output, meaning the motor is no longer controlled – **relying on the mechanical brake to stop**. Ensure the mechanical brake and secondary safety brake are in top condition, as they ultimately catch the load when the drive trips.",
+      "Frequent overvoltage events can damage the drive or capacitors. More critically, if not addressed, a scenario could occur where the drive doesn’t catch a lowering load early enough, leading to a drop until the safety brake activates. Treat this fault as a priority – do not operate the BMU in heavy load lowering conditions until mitigated.",
+      "If a braking resistor is in the circuit, it can get extremely hot during operation (it’s dissipating kinetic energy as heat). When checking or replacing resistors, **ensure power is isolated and wait** sufficiently for it to cool. Keep combustible materials away from resistors.",
+      "Lowering a heavy load in manual/emergency mode (bypassing the drive) should be done per the manufacturer’s emergency procedures (often a manual lowering by brake release) – never rely on a faulting drive to control descent. Engage the manual descent procedure if the drive cannot safely lower due to regen faults."
+    ],
+    "remedial_actions": [
+      "Install or repair the braking resistor: If none is present and the application clearly requires one (any time you have significant lowering loads), add a correctly sized resistor kit from the drive manufacturer. If the resistor is present but burnt out, replace it and ensure it has proper cooling and no signs of over-stressing (maybe choose a higher wattage if the duty was too high).",
+      "Increase the deceleration time in the drive to spread out the braking energy. For example, if stops were very abrupt, lengthen them so the motor acts as a generator for a longer time but with less peak power. This reduces the peak voltage generated. However, do not exceed what’s safe for stopping distance – there’s a balance between smooth decel and not overrunning limits.",
+      "Enable dynamic braking functions and tune them. Many modern VFDs have parameters like “overvoltage control” that will automatically extend decel or modulate if DC bus gets too high. Ensure this is turned on. If it is on and still not enough, some drives allow attaching a regen unit (which feeds energy back to mains) – consider this if resistor solution is insufficient and the building power system can accept regen.",
+      "Verify the sequence of operations for stopping: adjust the timing so that the mechanical brake engages promptly once the speed is near zero, to hold the load and relieve the drive from holding torque. A correctly adjusted system per EN 1808 will have the mechanical brake prevent any creeping after the drive is off.",
+      "After implementing fixes, test by lowering the platform at full load (with extra precautions or lifelines in place). The VFD should decelerate without faulting. Monitor the DC bus during these tests if possible, and also measure resistor temperature. Continue to monitor in regular operation; no overvoltage faults should occur. Document this in the maintenance records as per BS 6037-1: a note that the braking system was improved and tested."
+    ],
+    "compliance_standard": "EN 1808 (requires controlled descent and secondary brake), BS 6037-1:2017",
+    "confidence": "Medium"
+  },
+  {
+    "id": "generic_hydraulic_cylinder_drift",
+    "manufacturer": "Generic",
+    "sub_system": "Hydraulics",
+    "symptom_title": "Hydraulic cylinder drift (jib or mast slowly lowers on its own)",
+    "symptom_details": [
+      "When the hydraulic cylinder is supposed to hold position (e.g., jib extended or retracted to a set point), it gradually creeps from that position without input",
+      "Over a few minutes, the jib might lower a noticeable amount, or the pantograph/scissor arm closes up slowly after being left extended",
+      "No external oil leaks are visible, and the drift can happen even with the control valve in neutral"
+    ],
+    "technical_root_causes": [
+      "Internal leaking in the cylinder (piston seal bypass): fluid is seeping from the high-pressure side of the cylinder to the low-pressure side past worn or damaged seals:contentReference[oaicite:45]{index=45}. This is a primary cause of drift when external leaks are absent.",
+      "Faulty counterbalance (holding) valve or pilot-operated check valve: these valves are meant to lock the cylinder in place. If a counterbalance valve’s spring or seat is damaged, or if contamination prevents it from closing fully, the cylinder can drift down as oil bleeds through it:contentReference[oaicite:46]{index=46}.",
+      "Thermal contraction/expansion: a lesser factor, but if a hot cylinder cools down, the oil volume contracts and can cause a slight drop. However, this would not typically cause continuous drift – continuous drift is more likely a leak.",
+      "Control valve spool leakage: the directional control valve (DCV) that ports oil to the cylinder might be leaking internally (due to wear or debris). If the spool or poppet isn’t sealing in neutral, pressurized oil can flow to the tank or opposite side slowly.",
+      "Flexible hose expansion: in some cases, hoses under pressure can expand or fittings give slightly, but again this usually stabilizes and is minor compared to seal leak issues."
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Secure the moving parts**. If the jib or platform is drifting down, ensure no one is under it and, if possible, support it with a mechanical prop or tie-off to prevent a sudden drop. Safety first before investigating.",
+      "Step 2: Conduct a simple drift test. Fully extend (or position) the cylinder, then close the shut-off valves (if the circuit has manual line ball valves or if you can cap the lines). If the drift significantly reduces or stops with valves closed, it indicates the leak is likely not in the cylinder but in the valve path. If drift continues even when isolated, the cylinder seals are definitely suspect.",
+      "Step 3: Check the counterbalance valve (if installed on that cylinder). These are often mounted directly on the cylinder or very near it. They have adjustments and locknuts. Do not adjust yet, but listen/feel if fluid is passing (some valves hiss or get warm when leaking internally). Remove and inspect the valve if possible: look for debris or damage on the valve poppet and seat. A bench test can be done by applying pressure to see if it holds or leaks down.",
+      "Step 4: Sample the hydraulic oil for contamination. Use a clean bottle to take oil from the return line or tank. Inspect visually for particulates or water. For quantitative analysis, use ISO 4406 cleanliness code testing – for critical systems, should target something like **18/16/13 or cleaner**; higher numbers (e.g. 20/18/15, or if you see sludge) mean contamination that can cause valve wear:contentReference[oaicite:47]{index=47}. High particle counts can score seals and valves, causing leaks.",
+      "Step 5: Check for external clues around the cylinder: even if you don’t see oil dripping, remove any protective boot or cover to inspect the rod seal area. Sometimes a leaking piston seal will push oil to the rod side, and if the rod seal is good it traps it, then that oil might vent later or during full retraction. An accumulation of oil on the rod or in the cylinder cushion area could hint at internal leakage.",
+      "Step 6: Verify system pressure holding: install a pressure gauge on the cylinder’s pressure port. Command the cylinder to hold a load and watch the gauge after the valve is centered. If the pressure drops over time while load moves, note whether the drop is rapid or slow. A rapid drop with movement usually means a valve leak; a slow decay might be seal leak if volume is small. Also observe the tank line – sometimes you can detect a slight flow to tank via a transparent line or by sound if fluid is leaking through a valve to tank.",
+      "Step 7: If the BMU has multiple cylinders (e.g., dual lift cylinders), try isolating one at a time if feasible to see which one drifts. This can pinpoint a leaking unit. In designs where two cylinders are plumbed together, one leaking can affect both – a careful isolation test is needed."
+    ],
+    "safety_hazards_and_warnings": [
+      "A drifting cylinder can lead to **unexpected movement** of the BMU jib or platform. This is a serious safety concern – the equipment could move into building structure or drop people. Until fixed, the BMU should be parked or secured in a safe position and taken out of service.",
+      "Be aware of **stored energy**: even if the platform has drifted down, the hydraulic system might still hold pressure. Before working on hydraulic components, release pressure safely. Use the manufacturer’s specified procedure (usually activating controls with power off to vent pressure, or cracking a fitting at a safe location with protective gear). Fluid under pressure can inject into skin, causing grave injuries.",
+      "If you must prop the jib or structure, use rated support devices – never rely on improvised props. And never put any body part under an elevated load that is only hydraulically supported.",
+      "Oil on floors from any leaks is a slip hazard – clean up spills promptly and use oil absorbent pads. Also, environmental note: dispose of waste oil and contaminated pads according to regulations."
+    ],
+    "remedial_actions": [
+      "Replace or reseal the cylinder if internal leakage is confirmed. Typically, this involves removing the cylinder and either installing a new one or having it overhauled with new seals. After reinstallation, cycle it several times and re-check for drift under load. This is often the definitive fix for drift issues caused by worn piston seals.",
+      "Repair or replace the counterbalance valve (or pilot check valve). If inspection shows debris, clean it and replace filters in the hydraulic system. If the valve seat is damaged or springs weakened, install a new valve. Set the new valve to the correct holding pressure as per manufacturer’s specs (often it’s set slightly above the load-induced pressure).",
+      "Improve hydraulic fluid quality: filter or completely change the hydraulic oil. Bring the cleanliness to recommended levels (e.g., filter cart until sample tests come back around ISO code 16/14/11 or as advised by BMU maker). Continue with regular oil analysis every service interval – this can catch problems before they cause drift.",
+      "If the control valve was suspected, consider lapping or replacing the valve. For solenoid directional valves, you often replace the whole valve block or cartridge if internal leak-by is out of tolerance. This should be done if cylinder and counterbalance don’t fully stop the drift.",
+      "After all repairs, perform a **load-holding test** per **EN 1808** requirements: With a full load, extend the cylinder to a working position, then shut off power. Measure any settlement over e.g. 10 minutes. It should be within the allowable range (often a few millimeters, essentially zero noticeable movement). Only return the BMU to service if it passes this test.",
+      "As a preventive measure, establish a routine to stroke the cylinders and maintain seals (e.g., occasionally coat the cylinder rods with a light film of oil if exposed to the elements to prevent corrosion which damages seals). Also ensure the BMU operators do not leave the jib extended with heavy load for long periods unnecessarily – if they do, instruct them to lower to a rest position or support if possible."
+    ],
+    "compliance_standard": "LOLER 1998 (Reg. 8 – prevent unintentional movement), ISO 4406/ISO 4309 for fluid and component care",
+    "confidence": "High"
+  },
+  {
+    "id": "generic_hydraulic_motion_jerky",
+    "manufacturer": "Generic",
+    "sub_system": "Hydraulics",
+    "symptom_title": "Hydraulic movement is slow or jerky (lack of smooth operation)",
+    "symptom_details": [
+      "A hydraulic function of the BMU (such as telescoping jib or slewing) moves very slowly, lacks power, or jerks during operation",
+      "Operators might hear the hydraulic pump running (motor noise) but the movement is sluggish or stalls under load",
+      "In some cases, the motion starts then pauses and then continues (cavitating or air in system), often accompanied by oscillating sound or vibration"
+    ],
+    "technical_root_causes": [
+      "Air in the hydraulic system causing *cavitation*: if air bubbles are present in the lines or cylinders, the compressibility of air leads to spongy, erratic motion and loss of force. This often happens after maintenance or due to a leak on the suction side of the pump letting air in.",
+      "Low hydraulic fluid level or pump starvation: if the reservoir is low, the pump can suck air or insufficient fluid, leading to both air entry and inadequate pressure. Similarly, a clogged suction filter can cause the pump to starve and produce low/no flow.",
+      "Contaminated or degraded hydraulic oil causing valves to stick or orifices to clog. For instance, dirt or sludge in a proportional valve can restrict flow, resulting in slow response. High contamination (ISO code higher than recommended, e.g., >19/17/14) correlates with such issues:contentReference[oaicite:48]{index=48}.",
+      "Solenoid valve or control issue: a solenoid coil may be burnt out or weak, meaning a directional valve isn’t fully shifting – so you get partial flow. Alternatively, an electrical issue might only drive the valve partially (low voltage to coil). In manual valve systems, a partially open manual valve (due to linkage misadjustment) could do similar.",
+      "Pressure relief valve malfunctioning or set too low: if the system’s relief valve is opening prematurely or stuck slightly open, the system can’t build full pressure. This makes all movements lack power and speed, especially under load, and may cause jerky motion as the valve chatters.",
+      "Worn hydraulic pump: a pump that is worn (internal leakage) may not produce enough flow or pressure, especially noticeable under load – resulting in slow, weak cylinder movements."
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Check hydraulic fluid level** in the reservoir with the machine in the parked state (cylinders retracted as per manual). Ensure it meets the required level. If low, there may be a leak that allowed air to enter – you must find and fix any leak; simply refilling is not a complete solution.",
+      "Step 2: Inspect for visible leaks or air ingestion points. Look at all hoses and fittings on the suction side (from tank to pump). A loose clamp or fitting might not leak oil out but can draw air in when the pump runs (often a source of cavitation). Also, check if the return line is properly submerged in the tank – if it’s above fluid level, it could be splashing and pulling in air.",
+      "Step 3: Listen to the pump and observe the fluid in the reservoir while running a function. A crackling or “marbles” sound indicates cavitation. If present, stop and address it – prolonged cavitation damages the pump. If the fluid foams (lots of bubbles in tank), that confirms air ingress. You’ll need to bleed the system: identify bleed points on cylinders or cycle them slowly to purge air (with reservoir cap loose to let air escape).",
+      "Step 4: Attach a pressure gauge to the hydraulic circuit. First, measure the system’s pressure when a function is operated against a stop (carefully “dead-head” a cylinder briefly). If the pressure is far below the spec (for instance, you only see 50 bar when it should achieve 150 bar), then suspect the relief valve or pump. Adjust the relief valve (if you have the authority and procedure) to see if pressure changes – if not, the valve could be stuck open or the pump can’t reach pressure. Also watch if pressure oscillates (could indicate chatter or air).",
+      "Step 5: Test the solenoid valves. Manually override them if they have manual pushpins (some directional valves allow manual activation). Does the function move better with manual override? If yes, it could be an electrical issue (coil not energizing fully). Check each coil with a multimeter – measure its resistance and ensure it’s getting proper voltage when activated (often 24V DC in BMUs). A coil that reads open or very high resistance is burned out and won’t actuate the valve spool.",
+      "Step 6: Evaluate fluid cleanliness: draw a sample and look for cloudiness or particles. If the oil is very dark or has water (milky), its viscosity or lubricity might be off, affecting performance. A lab analysis can reveal particle count and moisture. Sludge in valves can often be inferred if the machine has not had regular fluid changes – sticky or jerky movement is a classic symptom of gummy valves.",
+      "Step 7: If possible, perform a flow test on the pump (this might require specialized equipment). For example, use a flow meter or see how quickly it can lift a known load vs. spec. If the pump flow is significantly reduced, that confirms wear. Pump internal leakage can also be assessed by measuring case drain flow (if excessive, pump is worn). This is an advanced diagnostic but important if other tests are inconclusive."
+    ],
+    "safety_hazards_and_warnings": [
+      "Jerky or slow hydraulics can **suddenly lurch** if the issue clears (e.g., after an air pocket passes or a valve suddenly opens fully). Operators should use caution – execute movements at low speed until resolved, and keep people and objects clear of any potential swing or drop path.",
+      "If you suspect a pressure relief is not working and pressure is low, be careful when adjusting it – do so gradually with proper gauges attached. Over-tightening a relief valve without knowing pump condition could lead to an overpressure and burst a hose or fitting, causing a high-pressure oil injection hazard.",
+      "Hydraulic oil reaching auto-ignition on hot surfaces is a fire risk (though less common in BMUs than in industrial hydraulic units). Still, if you see mist or fine sprays (from a pinhole leak under pressure), treat it as flammable and remove ignition sources; plus, oil mist is respiratory irritant – wear appropriate mask if in a confined area with a suspected leak.",
+      "Use gloves and eye protection when cracking open any hydraulic lines to bleed air. High-pressure oil can penetrate skin. Even low-pressure side can suddenly spurt hot oil or release a trapped pocket of high pressure. Always decompress the system via the proper procedure and assume lines may be under pressure."
+    ],
+    "remedial_actions": [
+      "Purge air from the system and fix the source of air ingress: If the reservoir was low, top it up with the correct hydraulic fluid (viscosity per BMU manual, e.g., ISO VG32 or 46). Then bleed the system. Often cycling each function to full extension and retraction slowly, with a brief pause at limits, will push air back to tank. Install or repair any faulty suction line components (like replacing a cracked inlet hose or tightening fittings).",
+      "Change the hydraulic filters and consider a full oil change if contamination is evident. Use filters of the correct micron rating (and don’t bypass them). After changing, run the system and then re-check the filter clog indicators (if present). This can greatly improve valve responsiveness if sludge was an issue.",
+      "Replace any malfunctioning solenoid coils or entire valve cartridges if they are found to be sticking. If a coil is burned, ensure the root cause is addressed (coils burn usually from over-voltage or being energized too long under heat). Provide the correct voltage and duty cycle. Install new coils and test the actuation – you should hear a crisp click of the valve shifting and see smooth motion resume.",
+      "Repair or replace the pump if it’s determined to be weak. Before replacement, double-check the relief valve isn’t simply set too low or leaking – you don’t want to swap a pump only to find it was a $50 valve. But if the pump is indeed worn (as indicated by inability to build pressure or significant internal leakage), install a new or rebuilt unit. Then adjust the system to spec pressure and verify full-speed operation of functions.",
+      "After corrective actions, do a functional test under no load and full load. Movements should be smooth and at the normal speed as per O&M manual. Check that there is no more jerking – if slight air removal is still needed, continue to cycle. Also monitor the pump noise and temperature – a healthy system will sound steady and not overheat quickly. Log the maintenance action and any parameter adjustments for future reference."
+    ],
+    "compliance_standard": "BS 6037-1:2017 (Maintenance of hydraulic systems), EN 1808 (functional safety for drives)",
+    "confidence": "Medium"
+  },
+  {
+    "id": "generic_wire_rope_damage",
+    "manufacturer": "Generic",
+    "sub_system": "Wire Rope",
+    "symptom_title": "Wire rope shows broken wires or deformation on inspection",
+    "symptom_details": [
+      "Visible broken strands or wires on the hoist rope – e.g., during routine check the engineer finds a number of broken outer wires in one section",
+      "Reduction in rope diameter noted (rope feels undersized compared to new, or caliper measurement shows significant loss)",
+      "Other deformities such as bird-caging (outer strands separated/bulging), kinked sections, crushed or flat spots on the rope, or a corroded, rusty appearance"
+    ],
+    "technical_root_causes": [
+      "Normal wear and bending fatigue over time – as the rope passes over sheaves and drums, especially if of insufficient diameter, wires will eventually fatigue and break. This is expected over the rope’s life and is why regular inspections are required:contentReference[oaicite:49]{index=49}.",
+      "Improper reeving or shock loads leading to **bird-caging or core failure**: e.g., a sudden stop (activation of the safety brake during a free-fall event) can cause the rope’s core to compress and strands to loosen (basket deformation). Similarly, if the rope was ever pulled over a sharp edge or twisted, structural damage can occur.",
+      "Corrosion or lack of lubrication: in outdoor environments, ropes that aren’t well lubricated can corrode from inside. Corrosion pits the wires, reducing their cross-section and causing premature broken wires. This often goes unseen until wires start snapping or the rope diameter reduces from core deterioration.",
+      "Contact with building or misused equipment: if the cradle was driven up against an obstruction, ropes might have been flattened or nicked. Also, painter’s hoists or other equipment sharing the rope could damage it (rare in a BMU context, but possible if rope was used in abnormal way).",
+      "Overloading beyond rope SWL: lifting loads beyond rated capacity or with high dynamic forces (like swinging or snagging the cradle) can break wires or permanently stretch the rope."
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Count broken wires** over the lay length. Mark a starting point on the rope and count visible broken wires over a distance of one rope lay (the length in which a strand makes one full revolution around the rope). According to ISO 4309 criteria, for example, **if 6 or more wires are broken in one lay length for a single-layer rope of certain construction, it likely exceeds discard limits**:contentReference[oaicite:50]{index=50}. Different rope constructions have different limits, so consult the standard or manufacturer’s guidance for the specific rope type (RCN number).",
+      "Step 2: Measure rope diameter at several points (at least 3). Use calipers or a rope gauge. If the diameter reduction exceeds 5-7% of nominal (commonly used threshold, exact per ISO 4309 and BS 7375), the rope should be discarded:contentReference[oaicite:51]{index=51}. Also check for localized necking which may indicate internal core failure.",
+      "Step 3: Bend the rope to look for internal breakage. Gently flexing a suspect section can reveal “fishhooks” (broken wire ends that poke out) or a crunchy feel which suggests internal corrosion and broken wires inside not visible externally.:contentReference[oaicite:52]{index=52} Note: Wear heavy gloves to avoid pricks from broken wires.",
+      "Step 4: Look at the rope termination (socket or wedge). Sometimes a lot of broken wires near the socket indicate that the termination is slipping or the rope has been spinning/twisting. Ensure the socket basket isn’t cracked and the wedge (if applicable) is properly seated. A failed termination can mimic rope failure symptoms.",
+      "Step 5: If possible, conduct a **Magnetic Rope Test (MRT)**. This is a specialized NDT where a device scans the rope for internal broken wires and loss of metallic area. While not always available, it can detect internal corrosion or core breaks that visual exam might miss:contentReference[oaicite:53]{index=53}. This would give a quantifiable loss percentage to compare against standards.",
+      "Step 6: Investigate the history: cross-reference inspection records. If this rope’s broken wire count jumped significantly since last inspection, that could indicate a one-time incident (like shock loading) rather than gradual wear. Try to identify any events (storm winds swinging the cradle, etc.) that might have caused the damage and inspect related components (like guides or buffer stops)."
+    ],
+    "safety_hazards_and_warnings": [
+      "**Critical:** A damaged suspension rope is an immediate safety hazard. Per LOLER and ISO 4309, ropes failing criteria must be taken out of service:contentReference[oaicite:54]{index=54}. Do not allow the BMU to be used or the platform to be manned if the rope is at discard criteria or doubted in integrity.",
+      "Avoid direct handling of frayed ropes without cut-resistant gloves. Broken wire ends are sharp and can cause lacerations. Also eye protection is advised when inspecting up close, in case a wire end flicks.",
+      "When a rope shows serious defects like bird-caging or core protrusion, there is a risk of sudden rope failure. The platform should be **lowered to a safe rest position** (if it’s safe to do so) or evacuated via rescue procedures if lowering is unsafe. Consider using secondary tether lines as backup during such an emergency descent.",
+      "Ensure no one is beneath the BMU during rope inspection or if rope condition is poor. If a rope were to fail, the platform or parts of it could fall from height, with obviously severe consequences.",
+      "It’s good practice (and required by standards) to quarantine and tag the equipment ‘Do Not Use’ until the rope is replaced and the system re-certified. Also, notify building owners and relevant safety personnel immediately."
+    ],
+    "remedial_actions": [
+      "Plan and execute a **rope replacement** as soon as possible. Order the correct specification rope from the manufacturer (exact length, construction, anti-rotation type if needed). Follow the BMU manual’s procedure for replacing the wire rope – typically one rope at a time if multiple, to maintain balance. This often requires a crane or suitable temporary attachment to take the cradle load during the swap.",
+      "Before installing the new rope, fix any underlying issues that may have caused damage: e.g., if a sharp edge in the rope path or a bad sheave is identified, repair that (replace the sheave, add a proper thimble, etc.). Also ensure the rope tensioning and spooling system (like any reeler or tension spring) is working so the new rope doesn’t suffer the same fate.",
+      "Lubricate the new rope appropriately (unless it comes pre-lubricated) with a lubricant that penetrates and is approved – lubrication reduces internal friction and corrosion. Going forward, implement a lubrication schedule if one is not in place.",
+      "After rope replacement, perform a load test per BS 6037 / EN 1808 – usually a proof load (e.g., 1.25x SWL) is hoisted to ensure the rope and terminations are sound. This also helps the new rope to bed in. Then conduct another thorough inspection of the rope after the test (to ensure no immediate issues like slipping at terminations).",
+      "Update the BMU’s rope log (many standards require keeping a record of rope usage, installation date, and inspections). If the rope had not reached typical discard time but failed early, increase the inspection frequency on the new rope and possibly have an expert assess if the rope construction is appropriate or if any machine aspect is causing undue wear (alignment of sheaves, fleeter device working, etc.).",
+      "Dispose of the old rope properly – it should be cut up or clearly marked as scrap to prevent any reuse. Often for forensics, you may keep a sample section to show the pattern of failure (for insurance or analysis purposes, especially if multiple ropes in similar units are in question)."
+    ],
+    "compliance_standard": "ISO 4309:2017 (Wire rope discard & inspection):contentReference[oaicite:55]{index=55}; LOLER 1998 (Reg.9 Thorough exam of lifting accessories)",
+    "confidence": "High"
+  },
+  {
+    "id": "gind_limit_switch_failure",
+    "manufacturer": "Gind",
+    "sub_system": "Safety & Limits",
+    "symptom_title": "Limit switch failed to stop travel (BMU overran safe position)",
+    "symptom_details": [
+      "During operation, the BMU did not stop at the designed end-of-travel point (e.g., cradle kept moving upward past its normal top position or trolley hit a mechanical end stop)",
+      "An operator or safety system had to hit the emergency stop to halt the machine as the automatic limit did not engage",
+      "Post-incident, the primary limit switch actuator was found bent or untriggered, and the “ultimate” (backup) limit might have engaged or a collision with physical stops occurred"
+    ],
+    "technical_root_causes": [
+      "Defective limit switch device: the contacts inside the switch might have failed (e.g., welded shut from a previous overcurrent or simply broken), so it never opened the circuit when actuated:contentReference[oaicite:56]{index=56}. Thus the control circuit never received the stop signal.",
+      "Limit switch misalignment or mechanical failure: the actuator (lever or plunger) was not properly reached by the machine part. This could be due to a shifted cam, a broken roller on the switch, or an out-of-adjustment condition where the switch triggers too late or not at all.",
+      "Wiring or circuit fault: the limit switch might have functioned, but a broken wire or loose terminal in the limit switch circuit prevented the stop signal from reaching the control. In older designs, multiple limit switches are wired in series – if a wire came off one, it could disable that entire chain’s function.",
+      "Bypassed or disabled limit: in rare cases, during maintenance someone might have bypassed the limit (jumpered it out) and forgotten to restore it. Alternatively, corrosion on terminals could effectively bypass (for instance bridging the circuit if water ingress occurred).",
+      "Logic fault (PLC systems): if the limit switch is a sensor feeding a PLC, a software issue could ignore it. However, per EN 1808, the ultimate limits are hard-wired. This root cause is less likely unless the system was modified incorrectly."
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Do not move the BMU** until the cause is understood. Secure any immediate hazards (if the cradle is at a hard stop or entangled, support it if needed). Inspect the limit switch that failed – is the actuator arm or trigger visibly damaged or stuck? Manually operate the switch by hand (with power off) – you should hear a click. If it’s a mechanical switch, listen for the contacts. If it’s proximity sensor type, test it with a metal piece and see if its indicator LED functions.",
+      "Step 2: Test the electrical continuity of the limit switch circuit. Use a multimeter on the switch terminals: activate the switch and see if the contact opens/closes as expected. If no change, the switch is bad internally. Also test the wiring from that switch back to the panel – there should be near zero ohms if wiring is intact (when switch is closed). Any open circuit or high resistance needs investigating.",
+      "Step 3: Examine the cam or trip dog that engages the switch. Is it present and tight on the drive? Sometimes a setscrew loosens and the cam doesn’t rotate into position to hit the limit. Realign and tighten as necessary. Also verify the cam hasn’t sheared off. If adjustable, check it against drawings for correct positioning.",
+      "Step 4: Check for environmental ingress. Open the limit switch enclosure – is there water, dirt, or corrosion? A limit on a rooftop BMU (e.g., boom top limit) could suffer water ingress (even if rated IP67, age can compromise seals). Corrosion could freeze the mechanism or short the contacts. Dry/clean it and see if that frees it, but replacement is usually safer if it got wet.",
+      "Step 5: If the BMU uses an **ultimate limit** (final cut-off) in addition to the normal limit, inspect that as well. The ultimate limit likely did trigger if the primary failed (by design). Check its condition – ultimate limits often are one-time use or require manual reset. For instance, an ultimate upper limit might have a fused link or a spring-return that stays open once tripped. Ensure to reset/replace this after fixing the primary issue, and test it (with extreme caution or manually) to verify it will function in the future.",
+      "Step 6: Review the control schematic to see how the limit integrates. If it’s hard-wired in series with contactor coils, a single fault will affect that coil. If PLC-monitored, retrieve any fault logs (the PLC might have logged an alarm if it noticed the limit did not change state when expected). This could give clues (like an alarm “Upper limit not seen”)."
+    ],
+    "safety_hazards_and_warnings": [
+      "A limit switch failure that leads to overrun is a **serious near-miss**. The system’s safety redundancy prevented disaster (hopefully), but until corrected, the BMU is **not safe to operate**. Tag it out of service. Investigate all limit switches (not just the failed one) because they are critical for preventing falls or equipment damage.",
+      "If the cradle hit a physical stop or an ultimate limit, inspect the structure and rope afterwards. An impact could have shock-loaded the ropes or the jib. Under LOLER, after an incident like this, a **thorough examination** is required before reuse.",
+      "When testing limits after repair, do so in a controlled manner: for example, approach the limit slowly in manual mode with someone ready to hit E-stop. Ensure no personnel are in hazardous positions (e.g., on the rooftop near a moving jib or on the platform if it might overrun upward into an overhang).",
+      "Always replace damaged limit switches with the exact type and rating. Using an incorrect replacement (different activation point or slower response) can be dangerous. And never bypass a limit switch even temporarily without strict procedural controls and safety measures; even in testing, mechanical stops/spotters should be in place."
+    ],
+    "remedial_actions": [
+      "Replace the faulty limit switch. Given the critical nature, it’s best to install a new switch of the same model and ratings (temperature, IP rating, etc.). If the original failed due to environment, consider adding extra protection like a boot or shield, but ensure it doesn’t impede function.",
+      "Correct the alignment: properly set the trip cam or actuator so that the switch activates at the precise point required. Follow Gind’s BMU manual or drawings for the correct positioning. Typically, the primary limit should engage slightly before any mechanical stop or ultimate limit, to allow a margin.",
+      "Repair wiring issues: if a wire was found broken or a terminal loose, re-terminate with new ferrules or terminals. If corrosion was present in the conduit or junction box, clean or replace those sections. Ensure continuity and do a tug test on connections.",
+      "Reset or replace the ultimate limit device if it was triggered. Many BMUs have a secondary cut-out (like a backup limit switch or a load sensing cut-off). This device may need manual resetting or even part replacement (some have sacrificial shear pins). Do not neglect this – the BMU should not run again until both primary and ultimate limits are confirmed working.",
+      "Test all limit switches systematically: not just the one that failed. Use the maintenance mode to slowly approach each travel end and see that each limit stops motion. Simulate other safety limits (like slack rope, anti-collision sensors) as well to ensure the whole safety circuit is functional. This comprehensive test is part of the recommissioning process after a serious fault, fulfilling BS 6037-1:2017 recommendations for functional testing of safety devices.",
+      "Document the incident and solution. Inform the client/owner about what went wrong and that it has been rectified. Update the maintenance records – including date of switch replacement and the fact that a full system test was done. This also helps future inspectors under LOLER know that this was addressed."
+    ],
+    "compliance_standard": "BS 6037-1:2017 (Section on safety device testing), EN 1808 (required two independent limit switches)",
+    "confidence": "High"
+  },
+  {
+    "id": "facadehoists_safety_circuit_lockout",
+    "manufacturer": "Facade Hoists",
+    "sub_system": "Safety & Limits",
+    "symptom_title": "Safety circuit locked out – BMU will not power up or move",
+    "symptom_details": [
+      "The BMU is unresponsive; the main power is on but control circuit is disabled (no motion when joystick or buttons are pressed)",
+      "A safety indicator or fault lamp is lit on the panel (for example, an E-stop tripped indicator, or simply a generic fault light stays on):contentReference[oaicite:57]{index=57}",
+      "Operators report that an emergency stop was activated earlier or a safety device (like overload sensor) tripped, and now the machine cannot be restarted even after apparent reset"
+    ],
+    "technical_root_causes": [
+      "An emergency stop button or emergency pull-cord is still activated or faulty. Often BMUs have multiple E-stop buttons (on the cradle, roof unit, maybe ground). If any one is stuck in the pressed position or its contacts are failing open, the safety circuit remains open and prevents startup.",
+      "A limit switch or other safety sensor is engaged or failed in the open state. For instance, a top limit might be stuck tripped or an overspeed brake sensor has latched. Some BMUs won’t reset until these are physically reset or the condition clears (e.g., slack rope switch still thinks rope is slack).",
+      "Failure of the safety relay or control relay circuit that latches the safety circuit. Many modern systems use safety relays that monitor E-stop circuits. If one of these relays detected a fault (like a contact weld) it will go into a lockout state:contentReference[oaicite:58]{index=58}. A dual-channel safety relay can also refuse to reset if the two channels are not changing state simultaneously (indicating a wiring issue).",
+      "Blown fuse or tripped circuit in the safety chain. Some systems have fuses on the safety circuit (for indicator lights, etc.). If a fuse blows, it could simulate an open E-stop. Similarly, if the BMU has an automatic overload cutoff, it might blow a control fuse when triggered (depending on design).",
+      "Access interlocks engaged: On some installations, there are cradle gate interlocks or roof parking pin sensors that must be in a certain state to allow operation. If, say, a gate switch is open (gate not closed) or a travel limit is not in the run position, the control circuit stays locked out."
+    ],
+    "diagnostic_steps": [
+      "Step 1: **Visually check all emergency stops and interlocks**. Go to each E-stop station (cradle, roof, any remote pendant) and ensure the buttons are released (twist or pull as design requires). Don’t forget any hidden ones (sometimes inside control cabinets or at remote pull cords). Verify any maintenance mode switches or key switches are in the normal position as well.",
+      "Step 2: Look at the control panel indicators. Many systems have specific lights for certain safeties. For example, a light for “Overload” or “Limit Switch Tripped”. If any of those are lit, follow that lead: e.g., if “Overload” is lit, maybe the overload sensor on the cradle is still active – perhaps the last lift genuinely overloaded and needs resetting (some overload devices have a manual reset or require the excess load to be removed).",
+      "Step 3: Using a multimeter, test the continuity of the safety circuit loop. This is often a series loop through all stops and safeties. Identify the terminals in the panel (schematic helps) where the E-stop chain begins and ends. You should read a closed circuit (near 0Ω) when all is normal. If it’s open (infinite resistance), systematically jump out or short one device at a time (temporarily for testing) to see when continuity returns. For instance, short across the E-stop terminals – if it closes, the issue is an E-stop or its wiring. If not, move to the next device (limit chain, etc.). **Perform this with control power off (no voltage) and only for diagnostics, not to actually run the machine bypassed**.",
+      "Step 4: Inspect the safety relay (if equipped). Many have LED indicators for each channel and for the reset status. For example, Pilz or similar relays might show channel 1 and 2 status. If one channel LED is off, that channel’s circuit is open. If both on but the relay won’t reset, it might indicate a discrepancy or internal fault. Try a power cycle reset of the relay if the manufacturer allows (some require a manual reset button to be pressed). If the relay module itself is suspected, you may need to replace it with the same model.",
+      "Step 5: Check less obvious interlocks: Is the cradle fully lowered into parking position? Some BMUs have a parking sensor that must be disengaged for travel, etc. Or an anemometer (wind speed sensor) could be preventing operation if winds are above threshold or if the sensor failed. See if the wind alarm is on. If so and wind is calm, the sensor or its connection might be bad.",
+      "Step 6: Examine wiring for any recent work. If recently maintenance was done, a wire might have been left disconnected. Particularly, look at terminal strips where control cables connect – an entire subset of safeties could be on one plug that was not reconnected. Also, check for broken cable at hinge points (like where cradle cable connects to roof trolley – if that cable carries the E-stop circuit, it could have snapped with constant movement)."
+    ],
+    "safety_hazards_and_warnings": [
+      "The BMU failing to reset is a protective measure – **do not bypass safety circuits for actual operation**. It may be tempting to jumper something to get running, but that could mask a serious unresolved issue and lead to an accident.",
+      "While troubleshooting, ensure the BMU is in a safe state: if it’s stuck mid-facade, secure the platform with secondary means if possible (tie-back lanyards or similar). If at roof, make sure it’s not going to suddenly move when the circuit closes.",
+      "If you need to test by bypassing a safety (for instance, to see if a certain switch is the culprit), do so only momentarily and with the machine immobilized. For example, if bypassing a limit, keep power off to the motors – you’re just checking circuit logic, not moving.",
+      "Document any bypasses or resets performed. It's critical for handover – the next person must know if any safety device has been put out of operation or needs re-adjustment.",
+      "Use proper lockout/tagout if multiple people are involved or if you leave the machine while in a half-fixed state. For instance, if you determine an E-stop is faulty and you go to get a replacement, lock the panel so no one unknowingly tries to power it up."
+    ],
+    "remedial_actions": [
+      "Identify and fix the specific trigger: For example, if an emergency stop station was found defective (e.g., contacts not closing when released), replace that E-stop switch with a new unit of equal spec. Similarly, if a limit switch was stuck, repair/replace it. Only use compatible components to maintain the safety rating.",
+      "Once the offending device is replaced or reset, restore the circuit and test all safety functions: Hit each E-stop to verify it indeed cuts power and releases properly, trigger each limit (slowly, in a controlled way), test the overload by a load test if applicable, and check the wind speed cutoff by manually triggering the anemometer or its relay. This ensures the entire safety chain is functional and not just the one element.",
+      "Replace the safety relay module if it was found to be faulty or if it had latched due to internal diagnostics. Use the exact model (to ensure compliance with Category 3/4 requirements). Wire it according to the original schematic and then test the reset functionality: the BMU should start only when all E-stops are released and the reset button (if any) is pressed in accordance with the design.",
+      "If wiring issues were found (such as a broken conductor in a pendant cable), repair the wiring with suitable ferrules and strain relief. For instance, if the cradle umbilical cable had an internal break, replace the section of cable or the whole cable – since a repaired break in a safety circuit should be done with high integrity or ideally new wire. Then re-run continuity tests.",
+      "Perform a formal **function test** and **thorough examination** before returning to service. According to LOLER, after a significant fix to safety systems, a competent person should do a thorough exam. This might include doing a full operational run: moving the BMU in all directions, ensuring each safety kicks in at the right point (e.g., buffers and limit switches) and that the machine can be properly reset after each activation. Only after passing all these checks should the machine be signed off for use.",
+      "Communicate with the building owner/maintenance manager about what caused the stoppage. For instance, if it was due to an overload event, re-educate operators on weight limits. If it was due to a wind alarm, maybe the wind speeds were excessive and they did the right thing – but also ensure the anemometer calibration is correct (often they trigger at ~15 m/s per EN 1808). Provide any necessary training or updates to prevent future false triggers or misuse."
+    ],
+    "compliance_standard": "LOLER 1998 (Reg. 8 - safety devices must be working), EN 1808 (safety interlocks and emergency stop circuit requirements)",
+    "confidence": "High"
+  }
+]
+
